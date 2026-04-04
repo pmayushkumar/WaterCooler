@@ -10,6 +10,10 @@ Water Cooler sends you personalized, culturally relevant conversation starters a
 
 ---
 
+<img src="assets/screenshot.png" alt="Water Cooler Weekly Digest" width="500">
+
+---
+
 </div>
 
 ## The Problem
