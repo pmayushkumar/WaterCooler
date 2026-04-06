@@ -10,6 +10,12 @@ Water Cooler sends you personalized, culturally relevant conversation starters a
 
 <br/>
 
+### Demo
+
+<video src="assets/demo.mp4" width="520" controls></video>
+
+<br/>
+
 **[Quick Start](#-quick-start)** · **[How It Works](#-how-it-works)** · **[Self-Host Guide](#-self-host-guide)** · **[Architecture](#-architecture)**
 
 </div>
