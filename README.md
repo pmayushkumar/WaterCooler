@@ -12,7 +12,7 @@ Water Cooler sends you personalized, culturally relevant conversation starters a
 
 ### Demo
 
-<video src="assets/demo.mp4" width="520" controls></video>
+https://github.com/user-attachments/assets/0c4244ac-a2d7-496d-b994-9ef398dd905c
 
 <br/>
 
