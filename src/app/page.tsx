@@ -31,7 +31,7 @@ export default function HomePage() {
             <li className="flex gap-3">
               <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
               <div>
-                <strong>Get weekly digests</strong> — Every Sunday, Tuesday, and Thursday at 8 PM, you&apos;ll receive an email with personalized conversation starters for each colleague, based on real-time events relevant to their interests.
+                <strong>Get conversation starters</strong> — Receive personalized conversation starters for each colleague, based on real-time events relevant to their interests.
               </div>
             </li>
           </ol>

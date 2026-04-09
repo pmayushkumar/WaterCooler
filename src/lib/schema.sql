@@ -49,14 +49,3 @@ CREATE TABLE IF NOT EXISTS limit_increase_requests (
   requested_at TEXT NOT NULL DEFAULT (datetime('now')),
   status TEXT NOT NULL DEFAULT 'pending'
 );
-
-CREATE TABLE IF NOT EXISTS digest_log (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_email TEXT,
-  user_name TEXT,
-  colleagues_count INTEGER,
-  colleague_names TEXT,
-  status TEXT,
-  email_id TEXT,
-  sent_at TEXT NOT NULL DEFAULT (datetime('now'))
-);

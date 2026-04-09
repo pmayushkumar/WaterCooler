@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import ColleagueForm from '@/components/forms/colleague-form';
 import Link from 'next/link';
 
-type Step = 'lookup' | 'form' | 'success' | 'first-success' | 'limit-reached';
+type Step = 'lookup' | 'form' | 'success' | 'limit-reached';
 
 export default function AddColleaguePage() {
   return (
@@ -26,8 +26,6 @@ function AddColleagueContent() {
   const [maxConnections, setMaxConnections] = useState(10);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [colleagueName, setColleagueName] = useState('');
-
   // Auto-lookup if email was pre-filled from registration
   useState(() => {
     if (prefilledEmail) {
@@ -76,12 +74,8 @@ function AddColleagueContent() {
     await doLookup(email);
   }
 
-  function handleColleagueSuccess(data: { colleague_id: string; is_first?: boolean }) {
-    if (data.is_first) {
-      setStep('first-success');
-    } else {
-      setStep('success');
-    }
+  function handleColleagueSuccess() {
+    setStep('success');
   }
 
   // Step: Email lookup
@@ -133,7 +127,7 @@ function AddColleagueContent() {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Connection Limit Reached</h1>
           <p className="text-gray-600 mb-6">
             You have {currentCount} connections (max {maxConnections}).
-            To add a new colleague, remove one first using the &quot;Remove&quot; link in your digest email.
+            To add a new colleague, remove one first.
           </p>
           <div className="space-y-3">
             <Link
@@ -167,40 +161,14 @@ function AddColleagueContent() {
     );
   }
 
-  // Step: First colleague success
-  if (step === 'first-success') {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-lg text-center">
-          <h1 className="text-2xl font-bold text-blue-600 mb-4">
-            Your first email digest is on the way!
-          </h1>
-          <p className="text-gray-600 mb-6">
-            We&apos;re preparing a personalized conversation guide{colleagueName ? ` for ${colleagueName}` : ''}...
-            Check your inbox in a few minutes!
-          </p>
-          <Link
-            href={`/colleagues/add?email=${encodeURIComponent(email)}`}
-            className="inline-block bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 font-medium"
-          >
-            + Add More Colleagues
-          </Link>
-          <p className="text-sm text-gray-500 mt-4">
-            After this first digest, you&apos;ll receive one every Sunday, Tuesday, and Thursday at 8 PM ET.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // Step: Success (not first)
+  // Step: Success
   if (step === 'success') {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-lg text-center">
           <h1 className="text-2xl font-bold text-green-600 mb-4">Colleague Added!</h1>
           <p className="text-gray-600 mb-6">
-            They&apos;ll appear in your next digest email.
+            Your colleague has been added to your connections.
           </p>
           <Link
             href={`/colleagues/add?email=${encodeURIComponent(email)}`}

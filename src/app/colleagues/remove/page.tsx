@@ -104,7 +104,7 @@ function RemoveColleagueContent() {
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Remove Colleague?</h1>
         <p className="text-gray-600 mb-6">
           Are you sure you want to remove <strong>{colleague?.name}</strong> from your connections?
-          They won&apos;t appear in your digest emails anymore.
+          They will be removed from your connections.
         </p>
         <div className="flex gap-4 justify-center">
           <button
