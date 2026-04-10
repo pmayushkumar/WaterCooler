@@ -62,5 +62,23 @@ export async function POST(request: NextRequest) {
     notes || ''
   );
 
-  return NextResponse.json({ colleague_id: colleagueId });
+  // Check if this was the first colleague (for instant digest trigger)
+  const isFirst = countResult.count === 0;
+
+  // Fire-and-forget: trigger instant digest for first colleague
+  if (isFirst) {
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    fetch(`${baseUrl}/api/digest/trigger`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.CRON_SECRET}`,
+      },
+      body: JSON.stringify({ user_id }),
+    }).catch(() => {
+      // Swallow error — digest failure shouldn't block colleague creation
+    });
+  }
+
+  return NextResponse.json({ colleague_id: colleagueId, is_first: isFirst });
 }

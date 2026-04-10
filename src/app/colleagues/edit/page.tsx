@@ -71,7 +71,7 @@ function EditColleagueContent() {
         <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-lg text-center">
           <h1 className="text-2xl font-bold text-green-600 mb-4">Changes Saved!</h1>
           <p className="text-gray-600">
-            Your changes have been saved.
+            Updated info will appear in your next digest email.
           </p>
         </div>
       </div>
